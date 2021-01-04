@@ -8,6 +8,8 @@ namespace Mirror.Experimental
     [HelpURL("https://mirror-networking.com/docs/Components/NetworkTransform.html")]
     public class AccurateNetworkVisibility : BaseNetworkVisibility
     {
+        #region NetworkVisibilty overrides
+
         public override bool OnCheckObserver(INetworkConnection conn)
         {
             return true;
@@ -15,6 +17,9 @@ namespace Mirror.Experimental
 
         public override void OnRebuildObservers(HashSet<INetworkConnection> observers, bool initialize)
         {
+            observers = Observers;
         }
+
+        #endregion
     }
 }

@@ -1,3 +1,5 @@
+using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -42,10 +44,17 @@ namespace Mirror
             }
         }
 
+        public List<T> Query(Vector3 v)
+        {
+            int key = CalculateHash(v);
+
+            return _positionHashes.Contains(key) ? _objects[key] : new List<T>();
+        }
+
         /// <summary>
         ///     Calculates a hash to be stored in our list for fast tracking.
         /// </summary>
-        /// <param name="position">The postion to use for calculating random ha</param>
+        /// <param name="position">The position to use for calculating random hash</param>
         /// <returns></returns>
         private int CalculateHash(Vector3 position)
         {

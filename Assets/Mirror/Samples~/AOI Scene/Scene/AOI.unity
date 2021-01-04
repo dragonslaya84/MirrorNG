@@ -2966,6 +2966,7 @@ GameObject:
   - component: {fileID: 1825594692}
   - component: {fileID: 1825594691}
   - component: {fileID: 1825594701}
+  - component: {fileID: 1825594702}
   m_Layer: 0
   m_Name: NetworkManager
   m_TagString: Untagged
@@ -2986,25 +2987,29 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Levels:
-  - Name: NetworkSceneManager
+  - Name: PlayerSpawner
+    level: 2
+  - Name: NetworkBehaviour
+    level: 2
+  - Name: ClientObjectManager
+    level: 2
+  - Name: NetworkIdentity
     level: 2
   - Name: NetworkServer
     level: 2
   - Name: NetworkTime
     level: 2
-  - Name: PlayerSpawner
+  - Name: ServerObjectManager
     level: 2
   - Name: NetworkClient
     level: 2
-  - Name: NetworkIdentity
-    level: 2
-  - Name: ServerObjectManager
-    level: 2
-  - Name: ClientObjectManager
+  - Name: BaseNetworkVisibility
     level: 2
   - Name: RemoteCallHelper
     level: 2
-  - Name: NetworkBehaviour
+  - Name: NetworkSceneManager
+    level: 2
+  - Name: NetworkBehaviourInspector
     level: 2
   - Name: ZoneHandler
     level: 2
@@ -3013,8 +3018,6 @@ MonoBehaviour:
   - Name: NetworkAnimator
     level: 2
   - Name: NetworkProximityChecker
-    level: 2
-  - Name: NetworkBehaviourInspector
     level: 2
   - Name: SteamyTransport
     level: 2
@@ -3049,6 +3052,8 @@ MonoBehaviour:
   - Name: NetworkRigidbody
     level: 2
   - Name: BasicAuthenticator
+    level: 2
+  - Name: AreaOfInterestManager
     level: 2
 --- !u!114 &1825594692
 MonoBehaviour:
@@ -3252,6 +3257,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _playerSpawner: {fileID: 1825594693}
   _spawnPointLimiter: 5
+--- !u!114 &1825594702
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1825594690}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8bfe119dbc4400e9f8fd86d877c6215, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  serverObjectManager: {fileID: 1825594695}
 --- !u!1 &1910356931
 GameObject:
   m_ObjectHideFlags: 0

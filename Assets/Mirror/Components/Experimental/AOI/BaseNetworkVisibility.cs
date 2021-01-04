@@ -1,29 +1,58 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Mirror.Experimental
 {
     public abstract class BaseNetworkVisibility : NetworkVisibility
     {
+        static readonly ILogger logger = LogFactory.GetLogger(typeof(BaseNetworkVisibility));
+
         #region Fields
 
-        [Header("Network Visibility Config")]
-        [SerializeField] private int _cellSize = 5;
-        [SerializeField] private int _cellHeight = 1000;
+        [Header("Person's Vision Range")]
+        protected int VisibleRange = 10;
 
-        private Vector3 _objectPosition;
+        private AreaOfInterestManager _areaOfInterestManager;
+        protected HashSet<INetworkConnection> Observers;
+
+        #endregion
+
+        #region Commands
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="range"></param>
+        [ServerRpc]
+        public void AdjustVisibleRange(int range)
+        {
+#if UNITY_EDITOR || UNITY_SERVER
+            VisibleRange = range;
+#endif
+        }
 
         #endregion
 
         #region Unity Methods
 
-        private void Update()
+        private void Awake()
         {
-            _objectPosition = transform.position;
+            _areaOfInterestManager = FindObjectOfType<AreaOfInterestManager>();
+
+            if (_areaOfInterestManager is null)
+            {
+                logger.LogError("[BaseNetworkVisibility] - Missing area of interest manager this component cannot work without it.");
+                return;
+            }
+
+            _areaOfInterestManager.ObserversUpdate += ObserversUpdate;
         }
 
-        public void OnDrawGizmos()
+        private void ObserversUpdate(INetworkConnection conn, HashSet<INetworkConnection> observers)
         {
-            //Gizmos.DrawWireCube(new Vector3(_objectPosition.x, _cellSize / 2 , _objectPosition.z), new Vector3(_cellSize, _cellSize, _cellSize));
+            if(conn.Identity.NetId != NetId) return;
+
+            Observers = observers;
         }
 
         #endregion

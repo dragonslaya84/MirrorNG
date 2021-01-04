@@ -239,3 +239,7 @@ MonoBehaviour:
   syncInterval: 0.1
   _cellSize: 16
   _cellHeight: 1000
+  size:
+    center: {x: 10, y: 2, z: 10}
+    halfWidth: 10
+    halfLength: 10
