@@ -1,3 +1,163 @@
+# [62.8.0](https://github.com/MirrorNG/MirrorNG/compare/v62.7.2...v62.8.0) (2021-01-25)
+
+
+### Features
+
+* sequence generator ([#548](https://github.com/MirrorNG/MirrorNG/issues/548)) ([1137865](https://github.com/MirrorNG/MirrorNG/commit/113786562272efbfb79438bb0733061cec82b718))
+
+## [62.7.2](https://github.com/MirrorNG/MirrorNG/compare/v62.7.1...v62.7.2) (2021-01-24)
+
+
+### Bug Fixes
+
+* use unity's cecil ([#545](https://github.com/MirrorNG/MirrorNG/issues/545)) ([4da7a45](https://github.com/MirrorNG/MirrorNG/commit/4da7a45d16d8262046a6ae4f5cb2015189d6e019))
+
+## [62.7.1](https://github.com/MirrorNG/MirrorNG/compare/v62.7.0...v62.7.1) (2021-01-22)
+
+
+### Bug Fixes
+
+* simplified SetHostVisibilityExceptionNetworkBehaviour test ([#544](https://github.com/MirrorNG/MirrorNG/issues/544)) ([b7465a5](https://github.com/MirrorNG/MirrorNG/commit/b7465a5ba139884157b3d63bd11710d68c9abb9a))
+
+# [62.7.0](https://github.com/MirrorNG/MirrorNG/compare/v62.6.1...v62.7.0) (2021-01-22)
+
+
+### Features
+
+* transports can report bandwidth ([#542](https://github.com/MirrorNG/MirrorNG/issues/542)) ([d84b3bb](https://github.com/MirrorNG/MirrorNG/commit/d84b3bbc9e0cee127c2fc2c0ee8aefc8fcce2250))
+
+## [62.6.1](https://github.com/MirrorNG/MirrorNG/compare/v62.6.0...v62.6.1) (2021-01-20)
+
+
+### Bug Fixes
+
+* additive scene example fixes ([#540](https://github.com/MirrorNG/MirrorNG/issues/540)) ([81c6d95](https://github.com/MirrorNG/MirrorNG/commit/81c6d95a253825922dd127e32a393c2288b1e823))
+
+# [62.6.0](https://github.com/MirrorNG/MirrorNG/compare/v62.5.5...v62.6.0) (2021-01-20)
+
+
+### Features
+
+* add Online and Offline scene support via optional component ([#505](https://github.com/MirrorNG/MirrorNG/issues/505)) ([a83dd5f](https://github.com/MirrorNG/MirrorNG/commit/a83dd5fa263900eae7882b2434940e20393fd674))
+
+## [62.5.5](https://github.com/MirrorNG/MirrorNG/compare/v62.5.4...v62.5.5) (2021-01-20)
+
+
+### Bug Fixes
+
+* additive scene example not working ([#534](https://github.com/MirrorNG/MirrorNG/issues/534)) ([1580627](https://github.com/MirrorNG/MirrorNG/commit/1580627f8de7ba521c3b105074e293f92e8fbee0))
+
+## [62.5.4](https://github.com/MirrorNG/MirrorNG/compare/v62.5.3...v62.5.4) (2021-01-19)
+
+
+### Bug Fixes
+
+* don't destroy network scene objects on server stop ([#518](https://github.com/MirrorNG/MirrorNG/issues/518)) ([c9d0387](https://github.com/MirrorNG/MirrorNG/commit/c9d03870210a130fa47237d14144a033585de481))
+
+## [62.5.3](https://github.com/MirrorNG/MirrorNG/compare/v62.5.2...v62.5.3) (2021-01-19)
+
+
+### Performance Improvements
+
+* avoid weaving editor scripts ([#537](https://github.com/MirrorNG/MirrorNG/issues/537)) ([42967f3](https://github.com/MirrorNG/MirrorNG/commit/42967f3b407d0fcfbcd7b1bd92f6b1a525ccf307))
+
+## [62.5.2](https://github.com/MirrorNG/MirrorNG/compare/v62.5.1...v62.5.2) (2021-01-19)
+
+
+### Bug Fixes
+
+* error saving field name SYNC_VAR_COUNT ([#536](https://github.com/MirrorNG/MirrorNG/issues/536)) ([cbc52e5](https://github.com/MirrorNG/MirrorNG/commit/cbc52e5fecc2c9aaadc3b7e2a0d886b2a6353afa))
+
+## [62.5.1](https://github.com/MirrorNG/MirrorNG/compare/v62.5.0...v62.5.1) (2021-01-19)
+
+
+### Bug Fixes
+
+* invalid IL with NI syncvars with hooks ([#535](https://github.com/MirrorNG/MirrorNG/issues/535)) ([49f6141](https://github.com/MirrorNG/MirrorNG/commit/49f614169b5deae4a4dd93e22b003f3f11b7ea03))
+
+# [62.5.0](https://github.com/MirrorNG/MirrorNG/compare/v62.4.1...v62.5.0) (2021-01-18)
+
+
+### Features
+
+* Add ConnectAsync overload with port. ([#516](https://github.com/MirrorNG/MirrorNG/issues/516)) ([0a9558f](https://github.com/MirrorNG/MirrorNG/commit/0a9558f1d474e3463fa5b79f38c6044da7bf856b))
+
+## [62.4.1](https://github.com/MirrorNG/MirrorNG/compare/v62.4.0...v62.4.1) (2021-01-15)
+
+
+### Bug Fixes
+
+* unbound allocation ([1fe1bf6](https://github.com/MirrorNG/MirrorNG/commit/1fe1bf6905eb1e860736781e01f309689051ee38))
+
+# [62.4.0](https://github.com/MirrorNG/MirrorNG/compare/v62.3.0...v62.4.0) (2021-01-13)
+
+
+### Features
+
+* set the assembly version in all assemblies ([#531](https://github.com/MirrorNG/MirrorNG/issues/531)) ([da381bd](https://github.com/MirrorNG/MirrorNG/commit/da381bd575298ddc44a7f3ac9c5291f704ff5e54))
+
+# [62.3.0](https://github.com/MirrorNG/MirrorNG/compare/v62.2.0...v62.3.0) (2021-01-12)
+
+
+### Features
+
+* writer generation errors link to code ([b76e873](https://github.com/MirrorNG/MirrorNG/commit/b76e87311aaf23f7292a14887a5d5bc2cb319239))
+
+# [62.2.0](https://github.com/MirrorNG/MirrorNG/compare/v62.1.0...v62.2.0) (2021-01-12)
+
+
+### Features
+
+* reader generation errors link to the code ([99a70fe](https://github.com/MirrorNG/MirrorNG/commit/99a70fe695cdabd70d9a484667f20c4c1af0a1dd))
+
+# [62.1.0](https://github.com/MirrorNG/MirrorNG/compare/v62.0.1...v62.1.0) (2021-01-11)
+
+
+### Features
+
+* send NI, NB and GO in RPC ([#528](https://github.com/MirrorNG/MirrorNG/issues/528)) ([428ca63](https://github.com/MirrorNG/MirrorNG/commit/428ca63711020cac9accf555ac63feb2495fe965))
+
+## [62.0.1](https://github.com/MirrorNG/MirrorNG/compare/v62.0.0...v62.0.1) (2021-01-11)
+
+
+### Bug Fixes
+
+* Use Guid.Empty in the tests ([e900d33](https://github.com/MirrorNG/MirrorNG/commit/e900d33f23486d0acb0794a9ff3932caae06ced0))
+
+# [62.0.0](https://github.com/MirrorNG/MirrorNG/compare/v61.1.2...v62.0.0) (2021-01-11)
+
+
+### Features
+
+* use ILPostProcessor for weaver ([#525](https://github.com/MirrorNG/MirrorNG/issues/525)) ([def64cd](https://github.com/MirrorNG/MirrorNG/commit/def64cd1db525398738f057b3d1eb1fe8afc540c)), closes [/forum.unity.com/threads/how-does-unity-do-codegen-and-why-cant-i-do-it-myself.853867/#post-5646937](https://github.com//forum.unity.com/threads/how-does-unity-do-codegen-and-why-cant-i-do-it-myself.853867//issues/post-5646937)
+
+
+### BREAKING CHANGES
+
+* MirrorNG assembly no longer contains the components.  Reference Mirror.Components instead.
+* Editor scripts are no longer weaved
+
+## [61.1.2](https://github.com/MirrorNG/MirrorNG/compare/v61.1.1...v61.1.2) (2021-01-09)
+
+
+### Bug Fixes
+
+* NullReferenceException destroying objects ([#526](https://github.com/MirrorNG/MirrorNG/issues/526)) ([3ad2608](https://github.com/MirrorNG/MirrorNG/commit/3ad2608e9e5223f72aba2458b97e5ec45ca15d94))
+
+## [61.1.1](https://github.com/MirrorNG/MirrorNG/compare/v61.1.0...v61.1.1) (2021-01-08)
+
+
+### Bug Fixes
+
+* warning with missing Transport folder ([be5aa69](https://github.com/MirrorNG/MirrorNG/commit/be5aa693fc439f309e257e202cc77172597218c0))
+
+# [61.1.0](https://github.com/MirrorNG/MirrorNG/compare/v61.0.2...v61.1.0) (2021-01-05)
+
+
+### Features
+
+* allow for generic NetworkBehaviors ([#519](https://github.com/MirrorNG/MirrorNG/issues/519)) ([2858ff4](https://github.com/MirrorNG/MirrorNG/commit/2858ff4cbb32cf22015389d57cdff182034624a1))
+
 ## [61.0.2](https://github.com/MirrorNG/MirrorNG/compare/v61.0.1...v61.0.2) (2021-01-02)
 
 

@@ -426,7 +426,7 @@ namespace Mirror
             int length = reader.ReadPackedInt32();
             if (length < 0)
                 return null;
-            if (reader.Position + length > reader.Length)
+            if (length > reader.Length - reader.Position)
                 throw new EndOfStreamException("Can't read " + length + " elements because it would read past the end of the stream. ");
             var result = new T[length];
             for (int i = 0; i < length; i++)
@@ -439,6 +439,33 @@ namespace Mirror
         public static Uri ReadUri(this NetworkReader reader)
         {
             return new Uri(reader.ReadString());
+        }
+
+        public static NetworkBehaviour ReadNetworkBehaviour(this NetworkReader reader)
+        {
+            NetworkIdentity identity = reader.ReadNetworkIdentity();
+            if (identity == null)
+            {
+                return null;
+            }
+
+            byte componentIndex = reader.ReadByte();
+            return identity.NetworkBehaviours[componentIndex];
+        }
+
+        public static T ReadNetworkBehaviour<T>(this NetworkReader reader) where T : NetworkBehaviour
+        {
+            return reader.ReadNetworkBehaviour() as T;
+        }
+
+        public static GameObject ReadGameObject(this NetworkReader reader)
+        {
+            NetworkIdentity identity = reader.ReadNetworkIdentity();
+            if (identity == null)
+            {
+                return null;
+            }
+            return identity.gameObject;
         }
     }
 }

@@ -1,7 +1,7 @@
 using System.IO;
 using NUnit.Framework;
 
-namespace Mirror.Tests
+namespace Mirror
 {
     // NetworkWriterTest already covers most cases for NetworkReader.
     // only a few are left
@@ -35,7 +35,7 @@ namespace Mirror.Tests
             {
                 try
                 {
-                    byte[] result = reader.ReadBytes(bytes, bytes.Length + 1);
+                    reader.ReadBytes(bytes, bytes.Length + 1);
                     // BAD: IF WE GOT HERE, THEN NO EXCEPTION WAS THROWN
                     Assert.Fail();
                 }

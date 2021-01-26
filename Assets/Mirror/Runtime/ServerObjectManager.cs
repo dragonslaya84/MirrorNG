@@ -24,6 +24,10 @@ namespace Mirror
         public NetworkServer server;
         public NetworkSceneManager networkSceneManager;
 
+        uint nextNetworkId = 1;
+        uint GetNextNetworkId() => nextNetworkId++;
+
+
         public readonly HashSet<NetworkIdentity> DirtyObjects = new HashSet<NetworkIdentity>();
         private readonly List<NetworkIdentity> DirtyObjectsTmp = new List<NetworkIdentity>();
 
@@ -70,14 +74,6 @@ namespace Mirror
             connection.RegisterHandler<ServerRpcMessage>(OnServerRpcMessage);
         }
 
-        void OnDestroy()
-        {
-            server.Started.RemoveListener(SpawnOrActivate);
-            server.Authenticated.RemoveListener(OnAuthenticated);
-            networkSceneManager.ServerChangeScene.RemoveListener(OnServerChangeScene);
-            networkSceneManager.ServerSceneChanged.RemoveListener(OnServerSceneChanged);
-        }
-
         void OnAuthenticated(INetworkConnection connection)
         {
             RegisterMessageHandlers(connection);
@@ -87,7 +83,8 @@ namespace Mirror
         {
             foreach (NetworkIdentity obj in server.Spawned.Values.Reverse())
             {
-                DestroyObject(obj, true);
+                if(obj.AssetId != Guid.Empty)
+                    DestroyObject(obj, true);
             }
         }
 
@@ -425,7 +422,13 @@ namespace Mirror
             if (ownerConnection == server.LocalConnection)
                 identity.HasAuthority = true;
 
-            identity.StartServer();
+            if (identity.NetId == 0)
+            {
+                // the object has not been spawned yet
+                identity.NetId = GetNextNetworkId();
+                server.Spawned[identity.NetId] = identity;
+                identity.StartServer();
+            }
 
             if (logger.LogEnabled()) logger.Log("SpawnObject instance ID " + identity.NetId + " asset ID " + identity.AssetId);
 

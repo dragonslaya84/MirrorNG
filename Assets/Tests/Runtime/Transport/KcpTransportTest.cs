@@ -24,6 +24,7 @@ namespace Mirror.Tests
 
         UniTask listenTask;
 
+        byte[] data;
 
         [UnitySetUp]
         public IEnumerator Setup() => UniTask.ToCoroutine(async () =>
@@ -62,6 +63,10 @@ namespace Mirror.Tests
             // so that the tests run quickly.
             serverConnection.Timeout = 500;
             clientConnection.Timeout = 500;
+
+            data = new byte[Random.Range(10, 255)];
+            for (int i=0; i< data.Length; i++)
+                data[i] = (byte)Random.Range(1, 255);
         });
 
         [UnityTearDown]
@@ -87,7 +92,6 @@ namespace Mirror.Tests
         [UnityTest]
         public IEnumerator SendDataFromClient() => UniTask.ToCoroutine(async () =>
         {
-            byte[] data = { (byte)Random.Range(1, 255) };
             await clientConnection.SendAsync(new ArraySegment<byte>(data));
 
             var buffer = new MemoryStream();
@@ -99,7 +103,6 @@ namespace Mirror.Tests
         [UnityTest]
         public IEnumerator SendDataFromServer() => UniTask.ToCoroutine(async () =>
         {
-            byte[] data = { (byte)Random.Range(1, 255) };
             await serverConnection.SendAsync(new ArraySegment<byte>(data));
 
             var buffer = new MemoryStream();
@@ -108,9 +111,38 @@ namespace Mirror.Tests
         });
 
         [UnityTest]
+        public IEnumerator ReceivedBytes() => UniTask.ToCoroutine(async () =>
+        {
+            long received = transport.ReceivedBytes;
+            Assert.That(received, Is.GreaterThan(0), "Must have received some bytes to establish the connection");
+
+            await clientConnection.SendAsync(new ArraySegment<byte>(data));
+
+            var buffer = new MemoryStream();
+            await serverConnection.ReceiveAsync(buffer);
+
+            Assert.That(transport.ReceivedBytes, Is.GreaterThan(received + data.Length), "Client sent data,  we should have received");
+
+        });
+
+        [UnityTest]
+        public IEnumerator SentBytes() => UniTask.ToCoroutine(async () =>
+        {
+            long sent = transport.SentBytes;
+            Assert.That(sent, Is.GreaterThan(0), "Must have received some bytes to establish the connection");
+
+            await serverConnection.SendAsync(new ArraySegment<byte>(data));
+
+            var buffer = new MemoryStream();
+            await clientConnection.ReceiveAsync(buffer);
+
+            Assert.That(transport.SentBytes, Is.GreaterThan(sent + data.Length), "Client sent data,  we should have received");
+
+        });
+
+        [UnityTest]
         public IEnumerator SendUnreliableDataFromServer() => UniTask.ToCoroutine(async () =>
         {
-            byte[] data = { (byte)Random.Range(1, 255) };
             await serverConnection.SendAsync(new ArraySegment<byte>(data), Channel.Unreliable);
 
             var buffer = new MemoryStream();
@@ -122,7 +154,6 @@ namespace Mirror.Tests
         [UnityTest]
         public IEnumerator SendUnreliableDataFromClient() => UniTask.ToCoroutine(async () =>
         {
-            byte[] data = { (byte)Random.Range(1, 255) };
             await clientConnection.SendAsync(new ArraySegment<byte>(data), Channel.Unreliable);
 
             var buffer = new MemoryStream();

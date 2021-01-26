@@ -4,7 +4,6 @@ using System.Linq;
 using Cysharp.Threading.Tasks;
 using Mirror.RemoteCalls;
 using UnityEngine;
-using Object = UnityEngine.Object;
 
 namespace Mirror
 {
@@ -97,15 +96,6 @@ namespace Mirror
             client.Connection.RegisterHandler<ServerRpcReply>(OnServerRpcReply);
             client.Connection.RegisterHandler<UpdateVarsMessage>(OnUpdateVarsMessage);
             client.Connection.RegisterHandler<RpcMessage>(OnRpcMessage);
-        }
-
-        void OnDestroy()
-        {
-            client.Connected.RemoveListener(OnClientConnected);
-            client.Disconnected.RemoveListener(OnClientDisconnected);
-
-            if (networkSceneManager != null)
-                networkSceneManager.ClientSceneChanged.RemoveListener(OnClientSceneChanged);
         }
 
         static bool ConsiderForSpawning(NetworkIdentity identity)

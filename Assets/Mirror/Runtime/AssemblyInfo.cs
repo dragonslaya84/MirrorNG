@@ -1,7 +1,7 @@
 using System.Reflection;
 using System.Runtime.CompilerServices;
 
-[assembly:AssemblyVersion("61.0.2")]
+[assembly:AssemblyVersion("62.8.0")]
 
 [assembly: InternalsVisibleTo("Mirror.Tests.Common")]
 [assembly: InternalsVisibleTo("Mirror.Tests")]
@@ -10,4 +10,4 @@ using System.Runtime.CompilerServices;
 [assembly: InternalsVisibleTo("Mirror.Tests.Performance.Editor")]
 [assembly: InternalsVisibleTo("Mirror.Tests.Performance.Runtime")]
 [assembly: InternalsVisibleTo("Mirror.Editor")]
-[assembly: InternalsVisibleTo("Mirror.Weaver")]
+[assembly: InternalsVisibleTo("Unity.Mirror.CodeGen")]
